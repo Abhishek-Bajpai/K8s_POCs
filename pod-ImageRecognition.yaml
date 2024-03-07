@@ -1,0 +1,24 @@
+# > kubectl run ai-image-recognition --image=abhirajbajpai/ai-image-recognition:v2 -o yaml --dry-run=client
+# This is a demo pod yaml generated using dryrun then modified to fit the resource need
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  namespace: staging
+  labels:
+    run: ai-image-recognition
+  name: ai-image-recognition
+spec:
+  containers:
+  - image: abhirajbajpai/ai-image-recognition:v2
+    name: ai-image-recognition
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "0.5"
+      limits:
+        memory: "512Mi"
+        cpu: "1"
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

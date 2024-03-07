@@ -1,0 +1,15 @@
+# To fix issue where u are trying to kubectl exec into a pod where pod has many containers
+
+# PS C:\CloudEngineeringPOCs\AI-ML-Edureka\AIML_POCs\CNN_ImageIDed\KubernetesWorld> kubectl get pods                                                           
+#NAME                READY   STATUS    RESTARTS   AGE
+#init-demo-1         1/1     Running   0          9h
+#multicontainerpod   2/2     Running   0          11m
+#PS C:\CloudEngineeringPOCs\AI-ML-Edureka\AIML_POCs\CNN_ImageIDed\KubernetesWorld> kubectl patch pod multicontainerpod -p '{"spec":{"containers":[{"name":"your-container-name"}]}}'
+#Error from server (BadRequest): invalid character 's' looking for beginning of object key string
+#PS C:\CloudEngineeringPOCs\AI-ML-Edureka\AIML_POCs\CNN_ImageIDed\KubernetesWorld> kubectl patch pod multicontainerpod -p "{\"spec\":{\"containers\":[{\"name\":\"your-container-name\"}]}}"
+#Error from server (BadRequest): invalid character '\\' looking for beginning of object key string
+#Error from server (NotFound): pods "spec\\:{\\containers\\:[{\\name\\:\\your-container-name\\}]}}" not found
+
+spec:
+  containers:
+  - name: multicontainerpod

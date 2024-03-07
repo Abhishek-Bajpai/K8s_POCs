@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: multicontainerpod
+  namespace: staging
+spec:
+  containers:
+    - image: nginx
+      name: firstpod
+    - image: busybox
+      name: logging
+      args: [/bin/sh, -c, "sleep 5000"]
+
+

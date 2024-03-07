@@ -1,0 +1,10 @@
+{
+    "spec": {
+      "containers": [
+        {
+          "name": "multicontainerpod"
+        }
+      ]
+    }
+  }
+  
